@@ -16,7 +16,7 @@ const Container = styled.View`
 const Login = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const passwordRef = useRef();
+    const passwordRef = useRef(null);
 
     const _handleSignup = () => {navigation.navigate('Signup')}
     return (
@@ -26,12 +26,12 @@ const Login = ({navigation}) => {
                 label="Email"
                 value={email}
                 onChangeText={text=>setEmail(text)}
-                onSubmitEditing={() => {}}
+                onSubmitEditing={() => {passwordRef.current.focus()}}
                 placeholder="Email"
                 returnKeyType="next"
-
             />
             <Input
+                ref={passwordRef}
                 label="Password"
                 value={password}
                 onChangeText={text=>setPassword(text)}
