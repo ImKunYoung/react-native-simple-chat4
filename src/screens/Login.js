@@ -1,6 +1,8 @@
 import React from "react";
 import styled from 'styled-components/native';
-import {Button, Text} from "react-native";
+import {Button} from "react-native";
+import {images} from "../utils/images";
+import {Image} from "../components";
 
 const Container = styled.View`
   flex: 1;
@@ -14,7 +16,7 @@ const Login = ({navigation}) => {
     const _handleSignup = () => {navigation.navigate('Signup')}
     return (
         <Container>
-            <Text style={{fontSize:30}}>Login Screen</Text>
+            <Image url={images.logo} imageStyle={{borderRadius:8}}/>
             <Button title="Signup" onPress={_handleSignup}/>
         </Container>
     )

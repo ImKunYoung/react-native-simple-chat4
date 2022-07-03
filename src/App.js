@@ -5,6 +5,7 @@ import {Asset} from "expo-asset";
 import {theme} from "./theme";
 import * as SplashScreen from "expo-splash-screen";
 import Navigation from "./navigations";
+import {images} from "./utils/images";
 
 const useCachedResources = () => {
     const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -12,8 +13,8 @@ const useCachedResources = () => {
         async function loadResourcesAndDataAsync() {
             try {
                 await SplashScreen.preventAutoHideAsync();
-                const images = [require('../assets/splash.png')];
-                images.map(async image =>
+                const imagess = [require('../assets/splash.png'), ...Object.values(images)];
+                imagess.map(async image =>
                     await Asset.fromModule(image).downloadAsync());
             } catch (e) {
                 console.warn(e);
