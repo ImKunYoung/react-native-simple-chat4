@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 /*바튼*/
 const Container = styled.TouchableOpacity`
-  background-color: ${({theme, isFilled}) => isFilled ? theme.buttonBackground : 'TRANSPARENT'}; /*isFilled 도 함수, theme 도 함수,,,*/
+  background-color: ${({theme, isFilled}) => isFilled ? theme.buttonBackground : 'TRANSPARENT'}; /*isFilled 면 theme.buttonBackground 아니면 반전,,,*/
   align-items: center;
   border-radius: 4px;
   width: 100%;
