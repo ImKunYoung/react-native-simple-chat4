@@ -6,13 +6,16 @@ import {Image, Input} from "../components";
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {removeWhitespace, validateEmail} from "../utils/common";
 import Button from "../components/Button";
+import {useSafeAreaInsets} from "react-native-safe-area-context";
 
-const Container = styled.SafeAreaView`
+const Container = styled.View`
   flex: 1;
+  justify-content: center;
   align-items: center;
   background-color: ${({theme}) => theme.background};
   padding: 0 20px;
-  
+  padding-top: ${( {insets: {top} }) => top}px;
+  padding-bottom: ${( {insets: {bottom} }) => bottom}px;
 `
 
 const ErrorText = styled.Text`
@@ -26,6 +29,7 @@ const ErrorText = styled.Text`
 
 const Login = ({navigation}) => {
     /*노치 디자인 문제 해결*/
+    const insets = useSafeAreaInsets();
     /*이메일*/
     const [email, setEmail] = useState('');
     /*비밀번호*/
@@ -81,7 +85,7 @@ const Login = ({navigation}) => {
                 extraScrollHeight={20}
             >
 
-                <Container>
+                <Container insets={insets}>
 
                     {/*로고*/}
                     <Image url={images.logo} imageStyle={{borderRadius:8}}/>
