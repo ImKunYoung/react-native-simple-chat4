@@ -1,9 +1,10 @@
 import React, {useRef, useState} from "react";
 import styled from 'styled-components/native';
-import {Button, Keyboard, TouchableWithoutFeedback} from "react-native";
+import {Keyboard, TouchableWithoutFeedback} from "react-native";
 import {images} from "../utils/images";
 import {Image, Input} from "../components";
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {removeWhitespace, validateEmail} from "../utils/common";
 
 const Container = styled.View`
   flex: 1;
@@ -14,10 +15,42 @@ const Container = styled.View`
 
 `
 
+const ErrorText = styled.Text`
+  align-items: flex-start;
+  width: 100%;
+  height: 20px;
+  margin-bottom: 10px;
+  line-height: 20px;
+  color: ${({theme}) => theme.errorText};
+`
+
 const Login = ({navigation}) => {
+    /*이메일*/
     const [email, setEmail] = useState('');
+    /*비밀번호*/
     const [password, setPassword] = useState('');
     const passwordRef = useRef(null);
+    /*오루 메시지*/
+    const [errorMessage, setErrorMessage] = useState('');
+
+
+    /*Email Input - event 처리*/
+    const _handleEmailChange = email => {
+
+        /*email 공백 제거*/
+        const changeEmail = removeWhitespace(email);
+        setEmail(changeEmail);
+
+        /*email 형식 확인, ErrorMessage 세팅*/
+        setErrorMessage(validateEmail(changeEmail) ? '':'Please verify your email.')
+
+    }
+
+    /*Password Input - event 처리*/
+    const _handlePasswordChange = password => {
+        /*password 공백 제거*/
+        setPassword(removeWhitespace(password))
+    }
 
     const _handleSignup = () => {navigation.navigate('Signup')}
     return (
@@ -35,7 +68,7 @@ const Login = ({navigation}) => {
                     <Input
                         label="Email"
                         value={email}
-                        onChangeText={text=>setEmail(text)}
+                        onChangeText={_handleEmailChange}
                         onSubmitEditing={() => {passwordRef.current.focus()}}
                         placeholder="Email"
                         returnKeyType="next"
@@ -44,13 +77,13 @@ const Login = ({navigation}) => {
                         ref={passwordRef}
                         label="Password"
                         value={password}
-                        onChangeText={text=>setPassword(text)}
+                        onChangeText={_handlePasswordChange}
                         onSubmitEditing={() => {}}
                         placeholder="Password"
                         returnKeyType="done"
                         isPassword
                     />
-                    <Button title="Signup" onPress={_handleSignup}/>
+                    <ErrorText>{errorMessage}</ErrorText>
                 </Container>
 
             </KeyboardAwareScrollView>
