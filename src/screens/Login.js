@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styled from 'styled-components/native';
 import {Keyboard, TouchableWithoutFeedback} from "react-native";
 import {images} from "../utils/images";
@@ -62,6 +62,14 @@ const Login = ({navigation}) => {
         navigation.navigate('Signup')
     }
 
+    /*버튼 Disabled Effect*/
+    const [disabled, setDisabled] = useState(true);
+
+    useEffect(()=>{
+        setDisabled(!(email && password && !errorMessage))
+    }, [email, password, errorMessage])
+
+
     return (
         /*TouchableWithoutFeedback -> 클릭에 대해 상호작용, Keyboard api (dismiss) -> 활성화된 키보들르 닫음*/
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -103,7 +111,7 @@ const Login = ({navigation}) => {
                     <ErrorText>{errorMessage}</ErrorText>
 
                     {/*로그인 버튼*/}
-                    <Button title="Login" onPress={_handleLoginButtonPress}/>
+                    <Button title="Login" onPress={_handleLoginButtonPress} disabled={disabled}/>
 
                     {/*Sign up 버튼*/}
                     <Button title="Sign up with email" onPress={_handleSignUpButtonPress} isFilled={false}/>
