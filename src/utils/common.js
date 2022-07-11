@@ -8,7 +8,7 @@ export const validateEmail = email => {
 
 }
 
-/*입력 받은 문자열의 공백 제거*/
+/*입력 받은 문자열의 공백 제거 처리*/
 export const removeWhitespace = text => {
     /* 문자열 내 모든 공백 */
     const regex = /\s/g;
