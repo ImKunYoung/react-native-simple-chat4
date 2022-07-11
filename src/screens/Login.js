@@ -7,11 +7,12 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {removeWhitespace, validateEmail} from "../utils/common";
 import Button from "../components/Button";
 
-const Container = styled.View`
+const Container = styled.SafeAreaView`
   flex: 1;
   align-items: center;
   background-color: ${({theme}) => theme.background};
-  padding: 20px;
+  padding: 0 20px;
+  
 `
 
 const ErrorText = styled.Text`
@@ -24,6 +25,7 @@ const ErrorText = styled.Text`
 `
 
 const Login = ({navigation}) => {
+    /*노치 디자인 문제 해결*/
     /*이메일*/
     const [email, setEmail] = useState('');
     /*비밀번호*/
