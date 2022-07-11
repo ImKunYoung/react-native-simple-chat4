@@ -75,7 +75,7 @@ const Login = ({navigation}) => {
 
                     {/*로고*/}
                     <Image url={images.logo} imageStyle={{borderRadius:8}}/>
-            
+
                     {/*email 입력창*/}
                     <Input
                         label="Email"
@@ -85,7 +85,7 @@ const Login = ({navigation}) => {
                         placeholder="Email"
                         returnKeyType="next"
                     />
-                    
+
                     {/*패스워드 입력창*/}
                     <Input
                         ref={passwordRef}
