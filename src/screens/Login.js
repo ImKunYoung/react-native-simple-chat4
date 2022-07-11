@@ -1,6 +1,6 @@
 import React, {useRef, useState} from "react";
 import styled from 'styled-components/native';
-import {Button} from "react-native";
+import {Button, Keyboard, TouchableWithoutFeedback} from "react-native";
 import {images} from "../utils/images";
 import {Image, Input} from "../components";
 
@@ -20,28 +20,30 @@ const Login = ({navigation}) => {
 
     const _handleSignup = () => {navigation.navigate('Signup')}
     return (
-        <Container>
-            <Image url={images.logo} imageStyle={{borderRadius:8}}/>
-            <Input
-                label="Email"
-                value={email}
-                onChangeText={text=>setEmail(text)}
-                onSubmitEditing={() => {passwordRef.current.focus()}}
-                placeholder="Email"
-                returnKeyType="next"
-            />
-            <Input
-                ref={passwordRef}
-                label="Password"
-                value={password}
-                onChangeText={text=>setPassword(text)}
-                onSubmitEditing={() => {}}
-                placeholder="Password"
-                returnKeyType="done"
-                isPassword
-            />
-            <Button title="Signup" onPress={_handleSignup}/>
-        </Container>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <Container>
+                <Image url={images.logo} imageStyle={{borderRadius:8}}/>
+                <Input
+                    label="Email"
+                    value={email}
+                    onChangeText={text=>setEmail(text)}
+                    onSubmitEditing={() => {passwordRef.current.focus()}}
+                    placeholder="Email"
+                    returnKeyType="next"
+                />
+                <Input
+                    ref={passwordRef}
+                    label="Password"
+                    value={password}
+                    onChangeText={text=>setPassword(text)}
+                    onSubmitEditing={() => {}}
+                    placeholder="Password"
+                    returnKeyType="done"
+                    isPassword
+                />
+                <Button title="Signup" onPress={_handleSignup}/>
+            </Container>
+        </TouchableWithoutFeedback>
     )
 }
 export default Login
