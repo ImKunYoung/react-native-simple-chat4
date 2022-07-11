@@ -23,4 +23,7 @@ export const theme = {
     buttonBackground: colors.blue,
     buttonTitle: colors.white,
     buttonUnfilledTitle: colors.blue, // 내부가 채워지지 않은 버튼의 타이틀 색
+
+    /*Navigation 헤더*/
+    headerTintColor: colors.black,
 }

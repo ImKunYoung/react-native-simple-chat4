@@ -13,6 +13,7 @@ const AuthStack = () => {
             screenOptions={{
                 headerTitleAlign:'center',
                 cardStyle:{backgroundColor:theme.background},
+                headerTintColor: theme.headerTintColor,
             }}
         >
             <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
