@@ -11,6 +11,8 @@ export const theme = {
     background: colors.white,
     text: colors.black,
 
+    errorText: colors.red, /*오류 메시지 택스트 컬러*/
+
     imageBackground: colors.grey_0,
 
     label: colors.grey_1,
