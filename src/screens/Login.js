@@ -34,21 +34,21 @@ const Login = ({navigation}) => {
     const [errorMessage, setErrorMessage] = useState('');
 
 
-    /*Email Input - event 처리*/
+    /*이메일 입력창 이벤트 처리*/
     const _handleEmailChange = email => {
 
-        /*email 공백 제거*/
+        /*공백 제거*/
         const changeEmail = removeWhitespace(email);
         setEmail(changeEmail);
 
-        /*email 형식 확인, ErrorMessage 세팅*/
+        /*이메일 형식 확인, ErrorMessage 세팅*/
         setErrorMessage(validateEmail(changeEmail) ? '':'Please verify your email.')
 
     }
 
-    /*Password Input - event 처리*/
+    /*비밀번호 입력창 이벤트 처리*/
     const _handlePasswordChange = password => {
-        /*password 공백 제거*/
+        /*공백 제거*/
         setPassword(removeWhitespace(password))
     }
 
