@@ -52,8 +52,13 @@ const Login = ({navigation}) => {
         setPassword(removeWhitespace(password))
     }
 
-    /*Button Component - event(onPress) 처리*/
+    /*로그인 버튼 이벤트 처리*/
     const _handleLoginButtonPress = () => {}
+
+    /*Sign up 버튼 이벤트 처리*/
+    const _handleSignUpButtonPress = () => {
+        navigation.navigate('Signup')
+    }
 
     const _handleSignup = () => {navigation.navigate('Signup')}
     return (
@@ -100,7 +105,7 @@ const Login = ({navigation}) => {
                     <Button title="Login" onPress={_handleLoginButtonPress}/>
 
                     {/*Sign up 버튼*/}
-                    <Button title="Sign up with email" onPress={() => navigation.navigate('Signup')} isFilled={false}/>
+                    <Button title="Sign up with email" onPress={_handleSignUpButtonPress} isFilled={false}/>
 
                 </Container>
 
