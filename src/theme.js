@@ -19,7 +19,8 @@ export const theme = {
     inputPlaceholder: colors.grey_1,
     inputBorder: colors.grey_1,
 
+    /*버튼 컴포넌트*/
     buttonBackground: colors.blue,
     buttonTitle: colors.white,
-    buttonUnfilledTitle: colors.blue,
+    buttonUnfilledTitle: colors.blue, // 내부가 채워지지 않은 버튼의 타이틀 색
 }
