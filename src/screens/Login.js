@@ -1,6 +1,6 @@
 import React, {useRef, useState} from "react";
 import styled from 'styled-components/native';
-import {Keyboard, TouchableWithoutFeedback} from "react-native";
+import {Button, Keyboard, TouchableWithoutFeedback} from "react-native";
 import {images} from "../utils/images";
 import {Image, Input} from "../components";
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -52,6 +52,9 @@ const Login = ({navigation}) => {
         setPassword(removeWhitespace(password))
     }
 
+    /*Button Component - event(onPress) 처리*/
+    const _handleLoginButtonPress = () => {}
+
     const _handleSignup = () => {navigation.navigate('Signup')}
     return (
         /*TouchableWithoutFeedback -> 클릭에 대해 상호작용, Keyboard api (dismiss) -> 활성화된 키보들르 닫음*/
@@ -64,7 +67,11 @@ const Login = ({navigation}) => {
             >
 
                 <Container>
+
+                    {/*로고*/}
                     <Image url={images.logo} imageStyle={{borderRadius:8}}/>
+            
+                    {/*email 입력창*/}
                     <Input
                         label="Email"
                         value={email}
@@ -73,17 +80,28 @@ const Login = ({navigation}) => {
                         placeholder="Email"
                         returnKeyType="next"
                     />
+                    
+                    {/*패스워드 입력창*/}
                     <Input
                         ref={passwordRef}
                         label="Password"
                         value={password}
                         onChangeText={_handlePasswordChange}
-                        onSubmitEditing={() => {}}
+                        onSubmitEditing={_handleLoginButtonPress}
                         placeholder="Password"
                         returnKeyType="done"
                         isPassword
                     />
+
+                    {/*error 발생시 메시지 출력*/}
                     <ErrorText>{errorMessage}</ErrorText>
+
+                    {/*로그인 버튼*/}
+                    <Button title="Login" onPress={_handleLoginButtonPress}/>
+
+                    {/*Sign up 버튼*/}
+                    <Button title="Sign up with email" onPress={() => navigation.navigate('Signup')} isFilled={false}/>
+
                 </Container>
 
             </KeyboardAwareScrollView>
