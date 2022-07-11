@@ -7,7 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "test": "jest"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
@@ -33,7 +34,8 @@
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "jest": "^28.1.2"
   },
   "private": true
 }
