@@ -20,6 +20,7 @@ const Login = ({navigation}) => {
 
     const _handleSignup = () => {navigation.navigate('Signup')}
     return (
+        /*TouchableWithoutFeedback -> 클릭에 대해 상호작용, Keyboard api (dismiss) -> 활성화된 키보들르 닫음*/
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <Container>
                 <Image url={images.logo} imageStyle={{borderRadius:8}}/>
