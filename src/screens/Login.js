@@ -1,10 +1,11 @@
 import React, {useRef, useState} from "react";
 import styled from 'styled-components/native';
-import {Button, Keyboard, TouchableWithoutFeedback} from "react-native";
+import {Keyboard, TouchableWithoutFeedback} from "react-native";
 import {images} from "../utils/images";
 import {Image, Input} from "../components";
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {removeWhitespace, validateEmail} from "../utils/common";
+import Button from "../components/Button";
 
 const Container = styled.View`
   flex: 1;
@@ -12,7 +13,6 @@ const Container = styled.View`
   align-items: center;
   background-color: ${({theme}) => theme.background};
   padding: 20px;
-
 `
 
 const ErrorText = styled.Text`
