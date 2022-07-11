@@ -53,7 +53,9 @@ const Login = ({navigation}) => {
     }
 
     /*로그인 버튼 이벤트 처리*/
-    const _handleLoginButtonPress = () => {}
+    const _handleLoginButtonPress = () => {
+        console.log("로그인 버튼 이벤트 처리")
+    }
 
     /*Sign up 버튼 이벤트 처리*/
     const _handleSignUpButtonPress = () => {
