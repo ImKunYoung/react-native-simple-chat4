@@ -9,7 +9,6 @@ import Button from "../components/Button";
 
 const Container = styled.View`
   flex: 1;
-  justify-content: center;
   align-items: center;
   background-color: ${({theme}) => theme.background};
   padding: 20px;
