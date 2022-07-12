@@ -3,7 +3,6 @@ import styled from "styled-components/native";
 import {Text} from "react-native";
 import {validateEmail} from "../utils/common";
 import PropTypes from "prop-types";
-import Button from "../components/Button";
 
 const Container = styled.View`
   flex: 1;
@@ -15,7 +14,7 @@ const Container = styled.View`
 const ErrorText = styled.Text`
 
 `
-export const ErrorMessage = ({names, email, password, passwordConfirm}) => {
+const ErrorMessage = ({names, email, password, passwordConfirm}) => {
     let _errorMessage = ' ';
     if(!names) {
         _errorMessage = 'Please verify your name.'
@@ -35,7 +34,7 @@ ErrorMessage.propTypes = {
     password: PropTypes.string,
 }
 
-export const Signup = () => {
+const Signup = () => {
     /*이름*/
     const [names, setName] = useState('')
     /*이메일*/
@@ -50,7 +49,7 @@ export const Signup = () => {
     const [disabled, setDisabled] = useState(true)
 
     useEffect(() => {
-        return ErrorMessage(names, email, password, passwordConfirm);
+        ErrorMessage({names, email, password, passwordConfirm});
     }, [names, email, password, passwordConfirm]);
 
 
@@ -60,3 +59,5 @@ export const Signup = () => {
         </Container>
     )
 }
+
+export default Signup;
