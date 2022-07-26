@@ -1,8 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styled from "styled-components/native";
 import {Text} from "react-native";
 import {validateEmail} from "../utils/common";
 import PropTypes from "prop-types";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import {Input} from "../components";
+
 
 const Container = styled.View`
   flex: 1;
@@ -14,7 +17,8 @@ const Container = styled.View`
 const ErrorText = styled.Text`
 
 `
-const ErrorMessage = ({names, email, password, passwordConfirm}) => {
+
+export const ErrorMessage = ({names, email, password, passwordConfirm}) => {
     let _errorMessage = ' ';
     if(!names) {
         _errorMessage = 'Please verify your name.'
@@ -35,8 +39,9 @@ ErrorMessage.propTypes = {
 }
 
 const Signup = () => {
+    console.log(`Signup.js`)
     /*이름*/
-    const [names, setName] = useState('')
+    const [name, setName] = useState('')
     /*이메일*/
     const [email, setEmail] = useState('')
     /*비밀번호*/
@@ -48,15 +53,30 @@ const Signup = () => {
     /*버튼 Disabled*/
     const [disabled, setDisabled] = useState(true)
 
+    /*useRef - 특정 Dom 선택 (when keyboard..)*/
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const passwordConfirmRef = useRef();
+
     useEffect(() => {
-        ErrorMessage({names, email, password, passwordConfirm});
-    }, [names, email, password, passwordConfirm]);
+        ErrorMessage({names: name, email, password, passwordConfirm});
+    }, [name, email, password, passwordConfirm]);
 
 
     return(
-        <Container>
-            <Text style={{fontSize: 30}}>Signup Screen</Text>
-        </Container>
+        <KeyboardAwareScrollView>
+            <Input
+                label="Name"
+                value={name}
+                onChangeText={text => setName(text)}
+                onSubmitEditing={()=>{
+                    setName(name.trim());
+                    emailRef.current.focus();
+                }}
+            />
+
+
+        </KeyboardAwareScrollView>
     )
 }
 
