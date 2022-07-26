@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import styled from "styled-components/native";
 import {Text} from "react-native";
-import {validateEmail} from "../utils/common";
+import {removeWhitespace, validateEmail} from "../utils/common";
 import PropTypes from "prop-types";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import {Input} from "../components";
@@ -78,6 +78,16 @@ const Signup = () => {
                 placeholder="Name"
                 returnKeyType="next"
             />
+            {/*이메일 입력창*/}
+            <Input
+                label="Email"
+                value={email}
+                onChangeText={text => setEmail(removeWhitespace(text))}
+                onSubmitEditing={()=>{passwordRef.current.focus()}}
+                placeholder="Email"
+                returnKeyType="next"
+            />
+            {/*비밀번호 입력창*/}
 
 
         </KeyboardAwareScrollView>
