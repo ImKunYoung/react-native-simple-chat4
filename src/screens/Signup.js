@@ -65,6 +65,7 @@ const Signup = () => {
 
     return(
         <KeyboardAwareScrollView>
+            {/*이름 입력창*/}
             <Input
                 label="Name"
                 value={name}
@@ -73,6 +74,9 @@ const Signup = () => {
                     setName(name.trim());
                     emailRef.current.focus();
                 }}
+                onBlur={()=>setName(name.trim())}
+                placeholder="Name"
+                returnKeyType="next"
             />
 
 
