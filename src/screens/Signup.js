@@ -134,7 +134,9 @@ const Signup = () => {
                     isPassword
             />
 
+            <ErrorText>{errorMessage}</ErrorText>
 
+            
 
         </KeyboardAwareScrollView>
     )
