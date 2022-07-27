@@ -11,7 +11,7 @@ const Container = styled.View`
   justify-content: center;
   align-items: center;
   background-color: ${({theme}) => theme.background};
-  padding: 0 20px;
+  padding: 40px 20px;
 `;
 
 const ErrorText = styled.Text`
@@ -82,7 +82,8 @@ const Signup = () => {
 
     return(
         <KeyboardAwareScrollView
-            contentContainerStyle = {{flex: 1}}
+            enableOnAndroid={true}
+            scrollForExtraHeightOnAndroid={20}
             extraScrollHeight={20}
         >
             <Container>
@@ -133,7 +134,7 @@ const Signup = () => {
                         value={passwordConfirm}
                         onChangeText={text => setPasswordConfirm(removeWhitespace(text))}
                         onSubmitEditing={_handleSignupButtonPress}
-                        placeholder="Password"
+                        placeholder="Password Confirm"
                         returnKeyType="done"
                         isPassword
                 />
