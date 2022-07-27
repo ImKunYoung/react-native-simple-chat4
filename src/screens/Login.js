@@ -64,6 +64,7 @@ const Login = ({navigation}) => {
 
     /*Sign up 버튼 이벤트 처리*/
     const _handleSignUpButtonPress = () => {
+        console.log("Sign up 버튼")
         navigation.navigate('Signup')
     }
 
