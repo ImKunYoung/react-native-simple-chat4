@@ -65,6 +65,7 @@ const Signup = () => {
 
     return(
         <KeyboardAwareScrollView>
+
             {/*이름 입력창*/}
             <Input
                 label="Name"
@@ -78,8 +79,10 @@ const Signup = () => {
                 placeholder="Name"
                 returnKeyType="next"
             />
+
             {/*이메일 입력창*/}
             <Input
+                ref={emailRef}
                 label="Email"
                 value={email}
                 onChangeText={text => setEmail(removeWhitespace(text))}
@@ -87,7 +90,18 @@ const Signup = () => {
                 placeholder="Email"
                 returnKeyType="next"
             />
+
             {/*비밀번호 입력창*/}
+            <Input
+                ref={passwordRef}
+                label="Password"
+                value={password}
+                onChangeText={text => setPassword(removeWhitespace(text))}
+                onSubmitEditing={() => passwordRef.current.focus()}
+                placeholder="Password"
+                returnKeyType="done"
+                isPassword
+            />
 
 
         </KeyboardAwareScrollView>
