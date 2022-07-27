@@ -79,7 +79,7 @@ const Signup = () => {
         console.log(`_handleSignupButtonPress`)
     };
 
-
+// TODO: - p355 - error message
     return(
         <KeyboardAwareScrollView
             enableOnAndroid={true}
