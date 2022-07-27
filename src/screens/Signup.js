@@ -38,7 +38,6 @@ export const ErrorMessage = ({names, email, password, passwordConfirm}) => {
     }
     return _errorMessage
 }
-
 ErrorMessage.propTypes = {
     password: PropTypes.string,
 }
@@ -63,9 +62,18 @@ const Signup = () => {
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
 
+    /*[name, email, password, passwordConfirm] 리렌더링 될 때마다 실행*/
     useEffect(() => {
-        ErrorMessage({names: name, email, password, passwordConfirm});
+        console.log('useEffect - ErrorMessage-- [name, email, password, passwordConfirm] 리렌더링 될 때마다 실행');
+         ErrorMessage({names: name, email, password, passwordConfirm});
     }, [name, email, password, passwordConfirm]);
+
+    useEffect(() => {
+        console.log('useEffect - setDisabled -- [name, email, password, passwordConfirm] 리렌더링 될 때마다 실행');
+        setDisabled(
+            !(name && email && password && passwordConfirm && !errorMessage)
+        );
+    }, [name, email, password, passwordConfirm, errorMessage])
 
     const _handleSignupButtonPress = () => {
         console.log(`_handleSignupButtonPress`)
@@ -85,7 +93,7 @@ const Signup = () => {
                 onChangeText={text => setName(text)}
                 onSubmitEditing={()=>{
                     setName(name.trim());
-                    emailRef.current.focus();
+                    emailRef.current?.focus();
                 }}
                 onBlur={()=>setName(name.trim())}
                 placeholder="Name"
@@ -98,7 +106,7 @@ const Signup = () => {
                 label="Email"
                 value={email}
                 onChangeText={text => setEmail(removeWhitespace(text))}
-                onSubmitEditing={()=>{passwordRef.current.focus()}}
+                onSubmitEditing={()=>{passwordRef.current?.focus()}}
                 placeholder="Email"
                 returnKeyType="next"
             />
@@ -109,7 +117,7 @@ const Signup = () => {
                 label="Password"
                 value={password}
                 onChangeText={text => setPassword(removeWhitespace(text))}
-                onSubmitEditing={() => passwordRef.current.focus()}
+                onSubmitEditing={() => passwordRef.current?.focus()}
                 placeholder="Password"
                 returnKeyType="done"
                 isPassword
@@ -125,6 +133,8 @@ const Signup = () => {
                     returnKeyType="done"
                     isPassword
             />
+
+
 
         </KeyboardAwareScrollView>
     )
