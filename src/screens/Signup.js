@@ -62,9 +62,16 @@ const Signup = () => {
         ErrorMessage({names: name, email, password, passwordConfirm});
     }, [name, email, password, passwordConfirm]);
 
+    const _handleSignupButtonPress = () => {
+        console.log(`_handleSignupButtonPress`)
+    };
+
 
     return(
-        <KeyboardAwareScrollView>
+        <KeyboardAwareScrollView
+            contentContainerStyle = {{flex: 1}}
+            extraScrollHeight={20}
+        >
 
             {/*이름 입력창*/}
             <Input
@@ -102,6 +109,18 @@ const Signup = () => {
                 returnKeyType="done"
                 isPassword
             />
+
+            {/*비밀번호 확인 입력창*/}
+            <Input  ref={passwordConfirmRef}
+                    label="Password Confirm"
+                    value={passwordConfirm}
+                    onChangeText={text => setPasswordConfirm(removeWhitespace(text))}
+                    onSubmitEditing={_handleSignupButtonPress}
+                    placeholder="Password"
+                    returnKeyType="done"
+                    isPassword
+            />
+
 
 
         </KeyboardAwareScrollView>
