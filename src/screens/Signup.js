@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 import {removeWhitespace, validateEmail} from "../utils/common";
 import PropTypes from "prop-types";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
-import {Input} from "../components";
+import {Image, Input} from "../components";
 import Button from "../components/Button";
 
 const Container = styled.View`
@@ -85,6 +85,9 @@ const Signup = () => {
             contentContainerStyle = {{flex: 1}}
             extraScrollHeight={20}
         >
+
+            {/*백그라운드 이미지*/}
+            <Image rounded/>
 
             {/*이름 입력창*/}
             <Input
