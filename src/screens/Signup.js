@@ -85,62 +85,63 @@ const Signup = () => {
             contentContainerStyle = {{flex: 1}}
             extraScrollHeight={20}
         >
+            <Container>
 
-            {/*백그라운드 이미지*/}
-            <Image rounded/>
+                {/*백그라운드 이미지*/}
+                <Image rounded/>
 
-            {/*이름 입력창*/}
-            <Input
-                label="Name"
-                value={name}
-                onChangeText={text => setName(text)}
-                onSubmitEditing={()=>{
-                    setName(name.trim());
-                    emailRef.current?.focus();
-                }}
-                onBlur={()=>setName(name.trim())}
-                placeholder="Name"
-                returnKeyType="next"
-            />
+                {/*이름 입력창*/}
+                <Input
+                    label="Name"
+                    value={name}
+                    onChangeText={text => setName(text)}
+                    onSubmitEditing={()=>{
+                        setName(name.trim());
+                        emailRef.current?.focus();
+                    }}
+                    onBlur={()=>setName(name.trim())}
+                    placeholder="Name"
+                    returnKeyType="next"
+                />
 
-            {/*이메일 입력창*/}
-            <Input
-                ref={emailRef}
-                label="Email"
-                value={email}
-                onChangeText={text => setEmail(removeWhitespace(text))}
-                onSubmitEditing={()=>{passwordRef.current?.focus()}}
-                placeholder="Email"
-                returnKeyType="next"
-            />
+                {/*이메일 입력창*/}
+                <Input
+                    ref={emailRef}
+                    label="Email"
+                    value={email}
+                    onChangeText={text => setEmail(removeWhitespace(text))}
+                    onSubmitEditing={()=>{passwordRef.current?.focus()}}
+                    placeholder="Email"
+                    returnKeyType="next"
+                />
 
-            {/*비밀번호 입력창*/}
-            <Input
-                ref={passwordRef}
-                label="Password"
-                value={password}
-                onChangeText={text => setPassword(removeWhitespace(text))}
-                onSubmitEditing={() => passwordRef.current?.focus()}
-                placeholder="Password"
-                returnKeyType="done"
-                isPassword
-            />
-
-            {/*비밀번호 확인 입력창*/}
-            <Input  ref={passwordConfirmRef}
-                    label="Password Confirm"
-                    value={passwordConfirm}
-                    onChangeText={text => setPasswordConfirm(removeWhitespace(text))}
-                    onSubmitEditing={_handleSignupButtonPress}
+                {/*비밀번호 입력창*/}
+                <Input
+                    ref={passwordRef}
+                    label="Password"
+                    value={password}
+                    onChangeText={text => setPassword(removeWhitespace(text))}
+                    onSubmitEditing={() => passwordRef.current?.focus()}
                     placeholder="Password"
                     returnKeyType="done"
                     isPassword
-            />
+                />
 
-            <ErrorText>{errorMessage}</ErrorText>
+                {/*비밀번호 확인 입력창*/}
+                <Input  ref={passwordConfirmRef}
+                        label="Password Confirm"
+                        value={passwordConfirm}
+                        onChangeText={text => setPasswordConfirm(removeWhitespace(text))}
+                        onSubmitEditing={_handleSignupButtonPress}
+                        placeholder="Password"
+                        returnKeyType="done"
+                        isPassword
+                />
 
-            <Button title="Signup" onPress={_handleSignupButtonPress} disabled={disabled}/>
+                <ErrorText>{errorMessage}</ErrorText>
 
+                <Button title="Signup" onPress={_handleSignupButtonPress} disabled={disabled}/>
+            </Container>
         </KeyboardAwareScrollView>
     )
 }
