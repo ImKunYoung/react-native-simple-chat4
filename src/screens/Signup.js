@@ -138,7 +138,6 @@ const Signup = () => {
 
             <Button title="Signup" onPress={_handleSignupButtonPress} disabled={disabled}/>
 
-
         </KeyboardAwareScrollView>
     )
 }
