@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
 import styled from "styled-components/native";
-import {Text} from "react-native";
 import {removeWhitespace, validateEmail} from "../utils/common";
 import PropTypes from "prop-types";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
@@ -12,10 +11,16 @@ const Container = styled.View`
   justify-content: center;
   align-items: center;
   background-color: ${({theme}) => theme.background};
-
+  padding: 0 20px;
 `;
-const ErrorText = styled.Text`
 
+const ErrorText = styled.Text`
+  align-items: flex-start;
+  width: 100%;
+  height: 20px;
+  margin-bottom: 10px;
+  line-height: 20px;
+  color: ${({theme}) => theme.errorText};
 `
 
 export const ErrorMessage = ({names, email, password, passwordConfirm}) => {
@@ -120,8 +125,6 @@ const Signup = () => {
                     returnKeyType="done"
                     isPassword
             />
-
-
 
         </KeyboardAwareScrollView>
     )
