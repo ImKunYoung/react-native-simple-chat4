@@ -4,7 +4,7 @@ import {removeWhitespace, validateEmail} from "../utils/common";
 import PropTypes from "prop-types";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import {Input} from "../components";
-
+import Button from "../components/Button";
 
 const Container = styled.View`
   flex: 1;
@@ -24,7 +24,7 @@ const ErrorText = styled.Text`
 `
 
 export const ErrorMessage = ({names, email, password, passwordConfirm}) => {
-    let _errorMessage = ' ';
+    let _errorMessage = '';
     if(!names) {
         _errorMessage = 'Please verify your name.'
     } else if (!validateEmail(email)) {
@@ -34,7 +34,7 @@ export const ErrorMessage = ({names, email, password, passwordConfirm}) => {
     } else if (password !== passwordConfirm) {
         _errorMessage = 'Passwords need to match.'
     } else {
-        _errorMessage = ' '
+        _errorMessage = ''
     }
     return _errorMessage
 }
@@ -65,7 +65,7 @@ const Signup = () => {
     /*[name, email, password, passwordConfirm] 리렌더링 될 때마다 실행*/
     useEffect(() => {
         console.log('useEffect - ErrorMessage-- [name, email, password, passwordConfirm] 리렌더링 될 때마다 실행');
-         ErrorMessage({names: name, email, password, passwordConfirm});
+        setErrorMessage(ErrorMessage({names: name, email, password, passwordConfirm}))
     }, [name, email, password, passwordConfirm]);
 
     useEffect(() => {
@@ -136,7 +136,8 @@ const Signup = () => {
 
             <ErrorText>{errorMessage}</ErrorText>
 
-            
+            <Button title="Signup" onPress={_handleSignupButtonPress} disabled={disabled}/>
+
 
         </KeyboardAwareScrollView>
     )
