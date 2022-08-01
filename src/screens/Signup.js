@@ -54,8 +54,11 @@ const Signup = () => {
     const [passwordConfirm, setPasswordConfirm] = useState('')
     /*에러 메시지*/
     const [errorMessage, setErrorMessage] = useState('')
+    /*에러 메시지 마운트*/
+    const didMountRef = useRef(false)
     /*버튼 Disabled*/
     const [disabled, setDisabled] = useState(true)
+
 
     /*useRef - 특정 Dom 선택 (when keyboard..)*/
     const emailRef = useRef();
@@ -65,7 +68,13 @@ const Signup = () => {
     /*[name, email, password, passwordConfirm] 리렌더링 될 때마다 실행*/
     useEffect(() => {
         console.log('useEffect - ErrorMessage-- [name, email, password, passwordConfirm] 리렌더링 될 때마다 실행');
-        setErrorMessage(ErrorMessage({names: name, email, password, passwordConfirm}))
+        if (didMountRef.current) {
+            setErrorMessage(ErrorMessage({names: name, email, password, passwordConfirm}))
+        } else {
+            didMountRef.current = true;
+        }
+
+
     }, [name, email, password, passwordConfirm]);
 
     useEffect(() => {
