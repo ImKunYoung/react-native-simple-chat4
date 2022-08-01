@@ -16,10 +16,22 @@ const StyledImage = styled.Image`
 `;
 
 const ButtonContainer = styled.TouchableOpacity`
-
+  background-color: ${({theme}) => theme.imageButtonBackground};
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
 `;
 
-const ButtonIcon = styled(MaterialIcons)`
+const ButtonIcon = styled(MaterialIcons).attrs({
+    name: 'photo-camera',
+    size: 22,
+})`
+  color: ${({theme}) => theme.imageButtonIcon};
 `;
 
 const PhotoButton = ({onPress}) => {
@@ -31,10 +43,11 @@ const PhotoButton = ({onPress}) => {
 }
 
 
-const Image = ({url, imageStyle, rounded}) => {
+const Image = ({url, imageStyle, rounded, showButton}) => {
     return (
         <Container>
             <StyledImage source={{uri:url}} style={imageStyle} rounded={rounded}/>
+            {showButton && <PhotoButton/>}
         </Container>
     )
 
