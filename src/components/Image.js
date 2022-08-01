@@ -43,7 +43,7 @@ const PhotoButton = ({onPress}) => {
 }
 
 
-const Image = ({url, imageStyle, rounded, showButton}) => {
+const Image = ({url, imageStyle, rounded, showButton, onChangeImage}) => {
     return (
         <Container>
             <StyledImage source={{uri:url}} style={imageStyle} rounded={rounded}/>
@@ -57,6 +57,7 @@ export default Image
 Image.defaultProps = {
     rounded: false,
     showButton: false,
+    onChangeImage: () => {},
 }
 
 Image.propTypes = {
@@ -64,4 +65,5 @@ Image.propTypes = {
     imageStyle: PropTypes.object,
     rounded: PropTypes.bool,
     showButton: PropTypes.bool,
+    onChangeImage: PropTypes.func,
 }
