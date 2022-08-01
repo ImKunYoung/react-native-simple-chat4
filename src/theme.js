@@ -14,6 +14,8 @@ export const theme = {
     errorText: colors.red, /*오류 메시지 택스트 컬러*/
 
     imageBackground: colors.grey_0,
+    imageButtonBackground: colors.grey_1,
+    imageButtonIcon : colors.white,
 
     label: colors.grey_1,
     inputPlaceholder: colors.grey_1,
