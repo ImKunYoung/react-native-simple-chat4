@@ -68,7 +68,7 @@ const Signup = () => {
     /*[name, email, password, passwordConfirm] 리렌더링 될 때마다 실행*/
     useEffect(() => {
         console.log('useEffect - ErrorMessage-- [name, email, password, passwordConfirm] 리렌더링 될 때마다 실행');
-        if (didMountRef.current) {
+        if (didMountRef.current) { // 처음 렌더링될 때 오류 메시지는 렌더링에서 제외
             setErrorMessage(ErrorMessage({names: name, email, password, passwordConfirm}))
         } else {
             didMountRef.current = true;
