@@ -56,10 +56,12 @@ export default Image
 
 Image.defaultProps = {
     rounded: false,
+    showButton: false,
 }
 
 Image.propTypes = {
     url: PropTypes.string,
     imageStyle: PropTypes.object,
     rounded: PropTypes.bool,
+    showButton: PropTypes.bool,
 }
