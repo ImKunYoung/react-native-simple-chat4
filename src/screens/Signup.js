@@ -100,7 +100,7 @@ const Signup = () => {
             <Container>
 
                 {/*프로필 이미지*/}
-                <Image rounded url={photoUrl}/>
+                <Image rounded url={photoUrl} showButton/>
 
                 {/*이름 입력창*/}
                 <Input
