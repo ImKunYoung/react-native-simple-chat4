@@ -24,7 +24,7 @@ const ErrorText = styled.Text`
 `
 
 export const ErrorMessage = ({names, email, password, passwordConfirm}) => {
-    let _errorMessage = '';
+    let _errorMessage;
     if(!names) {
         _errorMessage = 'Please verify your name.'
     } else if (!validateEmail(email)) {
