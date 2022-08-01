@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import {Image, Input} from "../components";
 import Button from "../components/Button";
+import {images} from "../utils/images";
 
 const Container = styled.View`
   flex: 1;
@@ -44,6 +45,8 @@ ErrorMessage.propTypes = {
 
 const Signup = () => {
     console.log(`Signup.js`)
+    /*default 사진*/
+    const [photoUrl, setPhotoUrl] = useState(images.photo);
     /*이름*/
     const [name, setName] = useState('')
     /*이메일*/
@@ -96,8 +99,8 @@ const Signup = () => {
         >
             <Container>
 
-                {/*백그라운드 이미지*/}
-                <Image rounded/>
+                {/*프로필 이미지*/}
+                <Image rounded url={photoUrl}/>
 
                 {/*이름 입력창*/}
                 <Input
