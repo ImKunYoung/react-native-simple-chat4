@@ -92,7 +92,7 @@ const Image = ({url, imageStyle, rounded, showButton, onChangeImage}) => {
 
 }
 export default Image
-
+// todo -62 : deprecated 부분 수정할 것
 Image.defaultProps = {
     rounded: false,
     showButton: false,
